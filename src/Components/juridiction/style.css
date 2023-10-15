@@ -1,0 +1,30 @@
+/* style.css */
+
+/* Add global styles if needed */
+body {
+  font-family: "Roboto", sans-serif;
+}
+
+/* Style the Paper component */
+.paper {
+  padding: 20px;
+  margin: 20px;
+}
+
+/* Style the Typography components for headings and text */
+.heading {
+  font-size: 24px;
+  font-weight: 600;
+  margin-bottom: 10px;
+}
+
+.subheading {
+  font-size: 18px;
+  font-weight: 500;
+  margin-bottom: 10px;
+}
+
+.text {
+  font-size: 16px;
+  margin-bottom: 10px;
+}

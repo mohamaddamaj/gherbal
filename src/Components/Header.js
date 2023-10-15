@@ -47,7 +47,7 @@ export default function Header() {
         </Box>
         <Box width={{ xs: "100%", sm: "100%", md: "50%" }}>
           <img
-            src=""
+            src="https://cdn.pixabay.com/photo/2017/07/23/17/43/isolated-2532037_1280.png"
             alt="court"
             width="100%"
             height="auto"

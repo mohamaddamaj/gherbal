@@ -1,15 +1,16 @@
 import "./App.css";
-import NavBar from "./components/Navbar";
-import Footer from "./components/Footer";
-import Header from "./components/Header";
-import i18next from "i18next";
+import Home from "./components/Home";
+import { Route, Routes } from "react-router-dom";
+import { CssBaseline } from "@mui/material";
 
 function App() {
   return (
     <>
-      <NavBar />
-      <Header />
-      <Footer />
+      <CssBaseline />
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/:lang" element={<Home />} />
+      </Routes>
     </>
   );
 }

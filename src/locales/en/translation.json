@@ -16,14 +16,14 @@
     "t1": "The appeal of decisions that settle one or more of the formal defenses stipulated in Article 73 of the Criminal Procedures Code shall be accepted.",
     "t2": " Decisions by which the Single Judge terminates the lawsuit without addressing its subject matter.",
     "t3": "Decisions issued on accepting or revoking the release requests.",
-    "advo": "The Court of Appeal considers the appeal of the judgments issued by the Criminal Single Judge in the cases of violations, provided that they shall be on:",
-    "circle": "Imprisonment, preventive detention or a one of more than five hundred thousand Lebanese pounds.",
-    "circle1": "Additional or secondary penalty or personal compensations of more than five hundred thousand Lebanese pounds",
-    "circle2": "Revocation of defense stipulated in Article 73 of the Criminal Procedures Code.",
-    "circle3": "Penalty for a violation correlative with a misdemeanor",
+    "search": "The Court of Appeal considers the appeal of the judgments issued by the Criminal Single Judge in the cases of violations, provided that they shall be on:",
+    "search1": "Imprisonment, preventive detention or a one of more than five hundred thousand Lebanese pounds.",
+    "search2": "Additional or secondary penalty or personal compensations of more than five hundred thousand Lebanese pounds",
+    "search3": "Revocation of defense stipulated in Article 73 of the Criminal Procedures Code.",
+    "search4": "Penalty for a violation correlative with a misdemeanor",
     "alert": "The Court of Appeal is entitled, when exercising its tasks, to listen to witnesses, interrogate the parties of the lawsuit, invite new witnesses, appoint an expert, listen to experts and carry out any new investigations it deems appropriate..."
   },
-  "deplay": {
+  "delay": {
     "final": "Final judgments",
     "p1": "With respect to the plaintiff, defendant, responsible for money, and guarantor, the delay is",
     "days": "15 days:",
