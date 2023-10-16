@@ -53,7 +53,13 @@ const DelayOfAppellate = () => {
 
   return (
     <Container>
-      <Typography variant="h5" sx={{ marginBottom: 2 }}>
+      <Typography
+        variant="h5"
+        sx={{
+          marginBottom: 2,
+          textAlign: i18n.language === "ar" ? "right" : "left",
+        }}
+      >
         {t("delay.final")}
       </Typography>
       <CssBaseline />
@@ -93,7 +99,13 @@ const DelayOfAppellate = () => {
             </ul>
           </StyledContent>
         </StyledPaper>
-        <Typography variant="h5" sx={{ marginBottom: 2 }}>
+        <Typography
+          variant="h5"
+          sx={{
+            marginBottom: 2,
+            textAlign: i18n.language === "ar" ? "right" : "left",
+          }}
+        >
           {t("delay.title2")}
         </Typography>
         <Grid container spacing={2}>
@@ -127,7 +139,13 @@ const DelayOfAppellate = () => {
         </Grid>
       </Grid>
 
-      <Typography variant="h6" sx={{ marginTop: 2 }}>
+      <Typography
+        variant="h6"
+        sx={{
+          marginTop: 2,
+          textAlign: i18n.language === "ar" ? "right" : "left",
+        }}
+      >
         {t("delay.title3")}
       </Typography>
       <Grid container spacing={2}>

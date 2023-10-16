@@ -75,7 +75,13 @@ const Jurisdiction = () => {
 
   return (
     <>
-      <Typography sx={{ margin: "10px", padding: "10px" }}>
+      <Typography
+        sx={{
+          margin: "10px",
+          padding: "10px",
+          textAlign: i18n.language === "ar" ? "right" : "left",
+        }}
+      >
         {t("herspecialty.txt")}
       </Typography>
 
@@ -160,7 +166,14 @@ const Jurisdiction = () => {
         </Grid>
       </Grid>
 
-      <Alert severity="success" sx={{ margin: "10px", padding: "10px" }}>
+      <Alert
+        severity="success"
+        sx={{
+          margin: "10px",
+          padding: "10px",
+          textAlign: i18n.language === "ar" ? "right" : "left",
+        }}
+      >
         {t("herspecialty.alert")}
       </Alert>
     </>
