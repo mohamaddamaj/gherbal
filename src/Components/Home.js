@@ -1,21 +1,27 @@
 import { Container } from "@mui/material";
 import Header from "./Header";
-import AppleTabs from "./Tabs";
-import DelayOfAppeal from "./delayOfapple/DelayOfApple";
-import Jurisdiction from "./juridiction/Jurisdiction";
+import Tabs from "./Tabs";
+import DelayOfAppellate from "./DelayOfAppellate/DelayOfAppellate";
+import Jurisdiction from "./Jurisdiction/Jurisdiction";
 import Footer from "./Footer";
-
-const tabs = [
-  { label: "jurisdiction", element: <Jurisdiction /> },
-  { label: "delay_of_appeal", element: <DelayOfAppeal /> },
-];
+import Navbar from "./Navbar";
+import { useState } from "react";
 
 const Home = () => {
+  const [value, setValue] = useState("delayOfAppellate");
+
+  const handleOnChangeValue = (value) => {
+    setValue(value);
+  };
+
   return (
     <>
-      <Header />
+      <Navbar />
       <Container maxWidth="xl">
-        <AppleTabs tabs={tabs} centered={true} />
+        <Header />
+        <Tabs onChangeValue={handleOnChangeValue} />
+        {value === "delayOfAppellate" && <DelayOfAppellate />}
+        {value === "jurisdiction" && <Jurisdiction />}
       </Container>
       <Footer />
     </>

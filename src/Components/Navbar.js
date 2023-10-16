@@ -5,16 +5,12 @@ import {
   Toolbar,
   IconButton,
   Typography,
-  Button,
   Box,
   Menu,
   MenuItem,
 } from "@mui/material";
 import { useTranslation } from "react-i18next";
 import LanguageIcon from "@mui/icons-material/Language";
-import MenuIcon from "@mui/icons-material/Menu";
-import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
-import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 
 function Navbar() {
   const { t, i18n } = useTranslation();
@@ -36,25 +32,25 @@ function Navbar() {
   return (
     <AppBar position="static">
       <Toolbar>
-        <Link to="/" style={{ textDecoration: "none" }}>
+        <Link to="/" style={{ textDecoration: "none", flexGrow: 1 }}>
           <Typography variant="h6">{t("pageTitle")}</Typography>
         </Link>
         <Box display="flex" alignItems="center">
           <IconButton onClick={openMenu}>
-            <MenuIcon />
+            <LanguageIcon />
           </IconButton>
           <Menu
             anchorEl={menuAnchor}
             open={Boolean(menuAnchor)}
             onClose={closeMenu}
           >
-            <MenuItem onClick={() => changeLanguage("en")}>English</MenuItem>
-            <MenuItem onClick={() => changeLanguage("ar")}>العربية</MenuItem>
+            <MenuItem onClick={() => changeLanguage("en")}>
+              <Link to="/">English</Link>
+            </MenuItem>
+            <MenuItem onClick={() => changeLanguage("ar")}>
+              <Link to="/ar">العربية</Link>
+            </MenuItem>
           </Menu>
-          <Link
-            to={`/${i18n.language === "en" ? "ar" : "en"}`}
-            style={{ textDecoration: "none", color: "white" }}
-          ></Link>
         </Box>
       </Toolbar>
     </AppBar>

@@ -6,6 +6,7 @@ import reportWebVitals from "./reportWebVitals";
 import { BrowserRouter } from "react-router-dom";
 import { ThemeProvider, createTheme } from "@mui/material";
 import i18next from "i18next";
+import "./locales/i18n";
 
 const getLanguage = () => i18next.language || window.localStorage.i18nextLng;
 const theme = createTheme({

@@ -1,5 +1,7 @@
 {
   "pageTitle": "Gherbal Initiative",
+  "jurisdiction": "Jurisdiction",
+  "delayOfAppellate": "Delay of Appeal",
   "header": {
     "title": "Criminal Court Of Appeal",
     "text1": " Within every governorate, there is one or more courts of appeal.",
@@ -8,8 +10,6 @@
   },
   "herspecialty": {
     "herspecialty": "Jurisdiction",
-    "delay": "مهلة الاستئناف",
-    "Jurisdiction": "اختصاصها",
     "txt": "The Court of Appeal considers the appeal of all judgments issued by the Criminal Single Judge in the cases of misdemeanors, provided that they shall have been settled in the merits of the dispute.",
     "txt1": "However, if they were not settled in the merits of the dispute, they shall be appealed with the final judgment only.",
     "ex": "With The Exception Of",
@@ -28,14 +28,14 @@
     "p1": "With respect to the plaintiff, defendant, responsible for money, and guarantor, the delay is",
     "days": "15 days:",
     "c1": "As of the date of its issuance if it is made in presentia",
-    "c2": "As of the date of its issuance if it is made in presentia",
+    "c2": "As of the date of being notified whether it is made in presentia or absentia.",
     "p2": " With respect to the Appellate Public Prosecutor, the delay is",
     "month": "one month:",
     "pc2": "As of the date of issuance of the judgment.",
     "p3": "With respect to the Appellate Public Prosecution, the delay is",
     "months": "two months:",
     "pc3": " As of the date of issuance of the judgment.",
-    "title2": "Decision on revoking or accepting the defenses stated in Article 73 of the Criminal Procedures Code",
+    "title2": "Decision on revoking or accepting the defenses stated in Article 73 of the Criminal Procedures Code:",
     "tp1": "With respect to the Public Prosecution, the delay is",
     "hours": " 24 hours",
     "bullet1": "As of the date of issuance of the decision.",

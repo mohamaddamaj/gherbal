@@ -1,43 +1,32 @@
 import React, { useState } from "react";
-import { Tabs, Tab, Paper, Box } from "@mui/material";
-import DelayOfAppeal from "./delayOfapple/DelayOfApple";
-import Jurisdiction from "./juridiction/Jurisdiction";
+import { Tabs, Tab, Box } from "@mui/material";
 
-const TabbedContent = () => {
-  const [value, setValue] = useState(0);
+import { useTranslation } from "react-i18next";
+
+const TabbedContent = ({ onChangeValue }) => {
+  const [value, setValue] = useState("delayOfAppellate");
+  const { t } = useTranslation();
 
   const handleChange = (event, newValue) => {
     setValue(newValue);
+    onChangeValue(newValue);
   };
 
   return (
-    <div>
-      <Tabs value={value} onChange={handleChange} centered>
-        <Tab label="Delay of Appeal" />
-        <Tab label="Jurisdiction" />
+    <Box sx={{ width: "100%", bgcolor: "background.paper", marginTop: "10px" }}>
+      <Tabs
+        value={value}
+        onChange={handleChange}
+        indicatorColor="primary"
+        textColor="inherit"
+        variant="fullWidth"
+        aria-label="full width tabs example"
+      >
+        <Tab label={t("delayOfAppellate")} value="delayOfAppellate" />
+        <Tab label={t("jurisdiction")} value="jurisdiction" />
       </Tabs>
-      <TabPanel value={value} index={0}>
-        <DelayOfAppeal />
-      </TabPanel>
-      <TabPanel value={value} index={1}>
-        <Jurisdiction />
-      </TabPanel>
-    </div>
+    </Box>
   );
 };
-
-function TabPanel(props) {
-  const { children, value, index } = props;
-
-  return (
-    <div role="tabpanel" hidden={value !== index}>
-      {value === index && (
-        <Paper elevation={3}>
-          <Box p={2}>{children}</Box>
-        </Paper>
-      )}
-    </div>
-  );
-}
 
 export default TabbedContent;

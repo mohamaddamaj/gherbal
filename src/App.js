@@ -1,16 +1,17 @@
 import "./App.css";
 import Home from "./components/Home";
-import { Route, Routes } from "react-router-dom";
 import { CssBaseline } from "@mui/material";
+import i18next from "i18next";
 
 function App() {
+  if (window.location.pathname.split("/")[1] === "ar")
+    i18next.changeLanguage("ar");
+  else i18next.changeLanguage("en");
+
   return (
     <>
       <CssBaseline />
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/:lang" element={<Home />} />
-      </Routes>
+      <Home />
     </>
   );
 }
