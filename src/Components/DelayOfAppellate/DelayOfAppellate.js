@@ -63,7 +63,11 @@ const DelayOfAppellate = () => {
         {t("delay.final")}
       </Typography>
       <CssBaseline />
-      <Grid container spacing={2}>
+      <Grid
+        container
+        spacing={2}
+        sx={{ textAlign: i18n.language === "ar" ? "right" : "left" }}
+      >
         <StyledPaper>
           <StyledContent>
             <Typography variant="h6" sx={{ fontWeight: "bold" }}>
@@ -71,7 +75,7 @@ const DelayOfAppellate = () => {
               <Highlight>{t("delay.days")}</Highlight>
             </Typography>
 
-            <ul style={customListStyle}>
+            <ul>
               <li style={customListItemStyle}>{t("delay.c1")}</li>
               <li style={customListItemStyle}>{t("delay.c2")}</li>
             </ul>
@@ -83,7 +87,7 @@ const DelayOfAppellate = () => {
               {t("delay.p2")}
               <Highlight>{t("delay.month")}</Highlight>
             </Typography>
-            <ul style={customListStyle}>
+            <ul>
               <li style={customListItemStyle}>{t("delay.pc2")}</li>
             </ul>
           </StyledContent>
@@ -94,7 +98,7 @@ const DelayOfAppellate = () => {
               {t("delay.p3")}
               <Highlight>{t("delay.months")}</Highlight>
             </Typography>
-            <ul style={customListStyle}>
+            <ul>
               <li style={customListItemStyle}>{t("delay.pc3")}</li>
             </ul>
           </StyledContent>
@@ -108,14 +112,18 @@ const DelayOfAppellate = () => {
         >
           {t("delay.title2")}
         </Typography>
-        <Grid container spacing={2}>
+        <Grid
+          container
+          spacing={2}
+          sx={{ textAlign: i18n.language === "ar" ? "right" : "left" }}
+        >
           <StyledPaper>
             <StyledContent>
               <Typography variant="h6" sx={{ fontWeight: "bold" }}>
                 {t("delay.tp1")}
                 <Highlight>{t("delay.hours")}</Highlight>
               </Typography>
-              <ul style={customListStyle}>
+              <ul>
                 <li style={customListItemStyle}>{t("delay.bullet1")}</li>
               </ul>
             </StyledContent>
@@ -126,7 +134,7 @@ const DelayOfAppellate = () => {
                 {t("delay.tp2")}
                 <Highlight>{t("delay.hours2")}</Highlight>
               </Typography>
-              <ul style={customListStyle}>
+              <ul>
                 <li style={customListItemStyle}>{t("delay.bullet2")}</li>
               </ul>
             </StyledContent>
@@ -138,7 +146,6 @@ const DelayOfAppellate = () => {
           </Alert>
         </Grid>
       </Grid>
-
       <Typography
         variant="h6"
         sx={{
@@ -148,22 +155,22 @@ const DelayOfAppellate = () => {
       >
         {t("delay.title3")}
       </Typography>
-      <Grid container spacing={2}>
+      <Grid
+        container
+        spacing={2}
+        sx={{ textAlign: i18n.language === "ar" ? "right" : "left" }}
+      >
         <Grid item xs={6}>
           <StyledPaper>
             <StyledContent>
-              <Typography variant="h6" sx={{ fontWeight: "bold" }}>
-                {t("delay.tb1")}
-              </Typography>
+              <Typography>{t("delay.tb1")}</Typography>
             </StyledContent>
           </StyledPaper>
         </Grid>
         <Grid item xs={6}>
           <StyledPaper>
             <StyledContent>
-              <Typography variant="h6" sx={{ fontWeight: "bold" }}>
-                {t("delay.tb2")}
-              </Typography>
+              <Typography>{t("delay.tb2")}</Typography>
             </StyledContent>
           </StyledPaper>
         </Grid>

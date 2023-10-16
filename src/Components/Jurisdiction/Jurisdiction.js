@@ -17,30 +17,16 @@ const StyledPaper = styled(Paper)(({ theme }) => ({
   flexDirection: "column",
 }));
 
-const StyledBox1 = styled(Box)(({ theme }) => ({
-  backgroundColor: "#fff",
-  padding: 10,
-  borderRadius: 8,
-}));
+const customListStyle = {
+  textAlign: "right",
+  direction: "rtl",
+  fontFamily: "YourArabicFont", // Replace with the actual font
+};
 
-const StyledBox2 = styled(Box)(({ theme }) => ({
-  display: "flex",
-  justifyContent: "center",
-  gap: theme.spacing(5),
-  marginTop: theme.spacing(3),
-}));
-
-const StyledAlertBox = styled(Box)(({ theme }) => ({
-  backgroundColor: "#4CAF50",
-  borderRadius: "4px",
-  padding: "8px 12px",
-  marginBottom: "16px",
-  textAlign: "center",
-  color: "#fff",
-  fontWeight: "bold",
-  boxShadow: "0px 2px 4px rgba(0, 0, 0, 0.2)",
-  display: "flex",
-}));
+const customListItemStyle = {
+  listStyleType: "circle",
+  marginLeft: "20px",
+};
 
 const Square = styled(Box)(({ theme }) => ({
   width: "300px",
@@ -58,17 +44,6 @@ const Square = styled(Box)(({ theme }) => ({
   borderRadius: ".5em",
   boxShadow: "0 0 .5em #000",
 }));
-
-const customListStyle = {
-  textAlign: "right",
-  direction: "rtl",
-  fontFamily: "YourArabicFont",
-};
-
-const customListItemStyle = {
-  listStyleType: "circle",
-  marginLeft: "20px",
-};
 
 const Jurisdiction = () => {
   const { t, i18n } = useTranslation();
@@ -88,10 +63,12 @@ const Jurisdiction = () => {
       <Grid container justify="center">
         <StyledPaper>
           <Typography
-            sx={{ textAlign: i18n.language === "ar" ? "right" : "left" }}
             fontWeight="bold"
             fontSize="1.7rem"
             fontFamily="SemiBold"
+            sx={{
+              textAlign: i18n.language === "ar" ? "right" : "left",
+            }}
           >
             {t("herspecialty.ex")}
           </Typography>
@@ -100,16 +77,15 @@ const Jurisdiction = () => {
             variant="h6"
             sx={{
               fontFamily: "Regular",
-              textAlign: i18n.language === "ar" ? "right" : "left",
             }}
           >
-            <ul style={customListStyle}>
-              <li style={customListItemStyle}>{t("herspecialty.t1")}</li>
-              <li style={customListItemStyle}>{t("herspecialty.t2")}</li>
-              <li style={customListItemStyle}>{t("herspecialty.t3")}</li>
+            <ul>
+              <li>{t("herspecialty.t1")}</li>
+              <li>{t("herspecialty.t2")}</li>
+              <li>{t("herspecialty.t3")}</li>
             </ul>
           </Typography>
-          <Box width={{ xs: "100%", sm: "60%", md: "15%" }}>
+          <Box width={{ xs: "100%", sm: "60%", md: "15%", display: "flex" }}>
             <img
               src="https://www.shutterstock.com/shutterstock/photos/2116706651/display_1500/stock-photo-close-up-of-gavel-book-and-scales-on-blurry-gray-mock-up-background-law-and-jurisdiction-concept-2116706651.jpg"
               alt="one"
