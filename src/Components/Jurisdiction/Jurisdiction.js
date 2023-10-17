@@ -1,13 +1,6 @@
 import React from "react";
 import { useTranslation } from "react-i18next";
-import {
-  Typography,
-  Grid,
-  Alert,
-  Card,
-  CardContent,
-  Icon,
-} from "@mui/material";
+import { Typography, Grid, Alert, Card, CardContent } from "@mui/material";
 import BlockIcon from "@mui/icons-material/Block";
 import GavelIcon from "@mui/icons-material/Gavel";
 
@@ -86,7 +79,7 @@ const Jurisdiction = ({ data }) => {
       <Grid item xs={12}>
         <Grid container spacing={2}>
           {data.decisions.map((item, index) => (
-            <Grid item xs={12} md={6} key={`considerations-${index}`}>
+            <Grid item xs={12} md={6} key={`decisions-${index}`}>
               <Card
                 variant="outlined"
                 sx={{
@@ -95,22 +88,24 @@ const Jurisdiction = ({ data }) => {
                   minHeight: "100%",
                 }}
               >
-                <CardContent sx={{ display: "flex", alignItems: "center" }}>
+                <CardContent
+                  sx={{
+                    display: "flex",
+                    alignItems: "center",
+                    justifyContent: "space-between",
+                  }}
+                >
                   {item.title}
                   {index === 0 ? (
                     <BlockIcon
                       sx={{
                         color: "#0c9fc1",
-                        marginLeft: "auto",
-                        marginRight: "auto",
                       }}
                     />
                   ) : index === 1 ? (
                     <GavelIcon
                       sx={{
                         color: "#0c9fc1",
-                        marginLeft: "auto",
-                        marginRight: "auto",
                       }}
                     />
                   ) : null}
