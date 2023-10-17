@@ -8,6 +8,7 @@ import {
   Box,
   Menu,
   MenuItem,
+  Button,
 } from "@mui/material";
 import { useTranslation } from "react-i18next";
 import LanguageIcon from "@mui/icons-material/Language";
@@ -25,7 +26,7 @@ function Navbar() {
   };
 
   const changeLanguage = (newLanguage) => {
-    i18n.changeLanguage(newLanguage);
+    // i18n.changeLanguage(newLanguage);
     closeMenu();
   };
 
@@ -44,11 +45,15 @@ function Navbar() {
             open={Boolean(menuAnchor)}
             onClose={closeMenu}
           >
-            <MenuItem onClick={() => changeLanguage("en")}>
-              <Link to="/">English</Link>
+            <MenuItem onClick={() => changeLanguage("en")} href="/">
+              <Button sx={{ color: "black" }} fullWidth href="/">
+                English
+              </Button>
             </MenuItem>
-            <MenuItem onClick={() => changeLanguage("ar")}>
-              <Link to="/ar">العربية</Link>
+            <MenuItem onClick={() => changeLanguage("ar")} href="/ar">
+              <Button fullWidth sx={{ color: "black" }} href="/ar">
+                العربية
+              </Button>
             </MenuItem>
           </Menu>
         </Box>

@@ -1,158 +1,126 @@
 import React from "react";
 import { useTranslation } from "react-i18next";
 import {
-  Paper,
   Typography,
   Grid,
-  Box,
-  styled,
   Alert,
-  Stack,
+  Card,
+  CardContent,
+  Icon,
 } from "@mui/material";
+import BlockIcon from "@mui/icons-material/Block";
+import GavelIcon from "@mui/icons-material/Gavel";
 
-const StyledPaper = styled(Paper)(({ theme }) => ({
-  padding: theme.spacing(2),
-  marginBottom: theme.spacing(2),
-  display: "flex",
-  flexDirection: "column",
-}));
-
-const customListStyle = {
-  textAlign: "right",
-  direction: "rtl",
-  fontFamily: "YourArabicFont", // Replace with the actual font
-};
-
-const customListItemStyle = {
-  listStyleType: "circle",
-  marginLeft: "20px",
-};
-
-const Square = styled(Box)(({ theme }) => ({
-  width: "300px",
-  height: "200px",
-  backgroundColor: "#f5f5f5",
-  marginBottom: theme.spacing(2),
-  padding: theme.spacing(2),
-  display: "flex",
-  alignItems: "center",
-  justifyContent: "center",
-  flexDirection: "column",
-  position: "relative",
-  zIndex: 1,
-  border: "1px solid red",
-  borderRadius: ".5em",
-  boxShadow: "0 0 .5em #000",
-}));
-
-const Jurisdiction = () => {
-  const { t, i18n } = useTranslation();
+const Jurisdiction = ({ data }) => {
+  const { t } = useTranslation();
 
   return (
-    <>
-      <Typography
-        sx={{
-          margin: "10px",
-          padding: "10px",
-          textAlign: i18n.language === "ar" ? "right" : "left",
-        }}
-      >
-        {t("herspecialty.txt")}
-      </Typography>
-
-      <Grid container justify="center">
-        <StyledPaper>
-          <Typography
-            fontWeight="bold"
-            fontSize="1.7rem"
-            fontFamily="SemiBold"
-            sx={{
-              textAlign: i18n.language === "ar" ? "right" : "left",
-            }}
-          >
-            {t("herspecialty.ex")}
-          </Typography>
-
-          <Typography
-            variant="h6"
-            sx={{
-              fontFamily: "Regular",
-            }}
-          >
-            <ul>
-              <li>{t("herspecialty.t1")}</li>
-              <li>{t("herspecialty.t2")}</li>
-              <li>{t("herspecialty.t3")}</li>
-            </ul>
-          </Typography>
-          <Box width={{ xs: "100%", sm: "60%", md: "15%", display: "flex" }}>
-            <img
-              src="https://www.shutterstock.com/shutterstock/photos/2116706651/display_1500/stock-photo-close-up-of-gavel-book-and-scales-on-blurry-gray-mock-up-background-law-and-jurisdiction-concept-2116706651.jpg"
-              alt="one"
-              width="100%"
-              height="auto"
-            />
-          </Box>
-        </StyledPaper>
-
-        <Stack
-          direction={{
-            xs: "column",
-            sm: i18n.language === "ar" ? "row-reverse" : "row",
-            md: i18n.language === "ar" ? "row-reverse" : "row",
-          }}
-          width="100%"
-          alignItems="center"
-          my={4}
-        >
-          <Box width="85%">
-            <Typography
-              fontFamily="Regular"
-              variant="h6"
-              sx={{
-                textAlign: i18n.language === "ar" ? "right" : "left",
-              }}
-            >
-              {t("herspecialty.search")}
-            </Typography>
-          </Box>
-        </Stack>
-
-        <Grid container spacing={2}>
-          <Grid item xs={12} sm={6} md={3}>
-            <Square>
-              <Typography variant="h6">{t("herspecialty.search1")}</Typography>
-            </Square>
-          </Grid>
-          <Grid item xs={12} sm={6} md={3}>
-            <Square>
-              <Typography>{t("herspecialty.search2")}</Typography>
-            </Square>
-          </Grid>
-          <Grid item xs={12} sm={6} md={3}>
-            <Square>
-              <Typography variant="h6">{t("herspecialty.search3")}</Typography>
-            </Square>
-          </Grid>
-          <Grid item xs={12} sm={6} md={3}>
-            <Square>
-              <Typography>{t("herspecialty.search4")}</Typography>
-            </Square>
-          </Grid>
+    <Grid container spacing={3}>
+      <Grid item xs={12}>
+        <Typography variant="h7">{data.description}</Typography>
+      </Grid>
+      <Grid item xs={12}>
+        <Card variant="outlined">
+          <CardContent>
+            <Grid container spacing={3}>
+              <Grid item xs={12} md={8}>
+                <Typography variant="h7">
+                  {t("jurisdiction.withTheExceptionOf")}
+                </Typography>
+                <ul>
+                  {data.exceptions.map((item, index) => (
+                    <li key={`exception-${index}`}>{item}</li>
+                  ))}
+                </ul>
+              </Grid>
+              <Grid
+                item
+                xs={12}
+                md={4}
+                sx={{ display: "flex", justifyContent: "flex-end" }}
+              >
+                <img
+                  src="https://cdn-icons-png.flaticon.com/512/994/994377.png"
+                  alt="one"
+                  width="256px"
+                  height="256px"
+                />
+              </Grid>
+            </Grid>
+          </CardContent>
+        </Card>
+      </Grid>
+      <Grid item xs={12}>
+        <Typography variant="h5">
+          {t("jurisdiction.theCourtOfAppealConsiders")}
+        </Typography>
+      </Grid>
+      <Grid item xs={12}>
+        <Grid container spacing={3}>
+          {data.considerations.map((item, index) => (
+            <Grid item xs={12} md={3} key={`considerations-${index}`}>
+              <Card
+                sx={{
+                  borderWidth: "2px",
+                  borderStyle: "solid",
+                  borderColor: item.color,
+                  minHeight: "100%",
+                }}
+              >
+                <CardContent>{item.title}</CardContent>
+              </Card>
+            </Grid>
+          ))}
         </Grid>
       </Grid>
-
-      <Alert
-        severity="success"
-        sx={{
-          margin: "10px",
-          padding: "10px",
-          textAlign: i18n.language === "ar" ? "right" : "left",
-        }}
-      >
-        {t("herspecialty.alert")}
-      </Alert>
-    </>
+      <Grid item xs={12}>
+        <Alert severity="info">
+          {t("delayOfAppellate.theCourtOfAppealIsEntitled")}
+        </Alert>
+      </Grid>
+      <Grid item xs={12}>
+        <Typography variant="h5">
+          {t("jurisdiction.decisionsOfCourt")}
+        </Typography>
+      </Grid>
+      <Grid item xs={12}>
+        <Grid container spacing={2}>
+          {data.decisions.map((item, index) => (
+            <Grid item xs={12} md={6} key={`considerations-${index}`}>
+              <Card
+                variant="outlined"
+                sx={{
+                  borderWidth: "2px",
+                  borderStyle: "1px",
+                  minHeight: "100%",
+                }}
+              >
+                <CardContent sx={{ display: "flex", alignItems: "center" }}>
+                  {item.title}
+                  {index === 0 ? (
+                    <BlockIcon
+                      sx={{
+                        color: "#0c9fc1",
+                        marginLeft: "auto",
+                        marginRight: "auto",
+                      }}
+                    />
+                  ) : index === 1 ? (
+                    <GavelIcon
+                      sx={{
+                        color: "#0c9fc1",
+                        marginLeft: "auto",
+                        marginRight: "auto",
+                      }}
+                    />
+                  ) : null}
+                </CardContent>
+              </Card>
+            </Grid>
+          ))}
+        </Grid>
+      </Grid>
+    </Grid>
   );
 };
 

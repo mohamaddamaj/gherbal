@@ -13,7 +13,14 @@ const TabbedContent = ({ onChangeValue }) => {
   };
 
   return (
-    <Box sx={{ width: "100%", bgcolor: "background.paper", marginTop: "10px" }}>
+    <Box
+      sx={{
+        width: "100%",
+        bgcolor: "background.paper",
+        marginTop: "10px",
+        marginBottom: "10px",
+      }}
+    >
       <Tabs
         value={value}
         onChange={handleChange}
@@ -22,8 +29,8 @@ const TabbedContent = ({ onChangeValue }) => {
         variant="fullWidth"
         aria-label="full width tabs example"
       >
-        <Tab label={t("delayOfAppellate")} value="delayOfAppellate" />
-        <Tab label={t("jurisdiction")} value="jurisdiction" />
+        <Tab label={t("delayOfAppellate.title")} value="delayOfAppellate" />
+        <Tab label={t("jurisdiction.title")} value="jurisdiction" />
       </Tabs>
     </Box>
   );

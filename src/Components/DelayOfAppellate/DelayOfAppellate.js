@@ -1,181 +1,101 @@
-import React, { useState } from "react";
+import React from "react";
 import { useTranslation } from "react-i18next";
 import {
-  Paper,
   Typography,
   Grid,
-  Container,
-  styled,
-  CssBaseline,
   Alert,
+  Stack,
+  Divider,
+  Card,
+  CardContent,
+  Box,
 } from "@mui/material";
 
-const StyledPaper = styled(Paper)(({ theme }) => ({
-  width: "100%",
-  maxWidth: "300px",
-  padding: theme.spacing(2),
-  margin: "30px",
-  marginBottom: theme.spacing(2),
-  backgroundColor: "#f2f2f2",
-  borderRadius: "8px",
-  boxShadow: "0 3px 5px rgba(0, 0, 0, 0.2)",
-  display: "flex",
-  flexDirection: "column",
-  alignItems: "center",
-  textAlign: "center",
-}));
-
-const StyledContent = styled("div")(({ theme }) => ({
-  padding: theme.spacing(2),
-}));
-
-const Highlight = styled("span")(({ theme }) => ({
-  color: theme.palette.primary.main,
-  fontWeight: "bold",
-}));
-
-const customListStyle = {
-  textAlign: "right",
-  direction: "rtl",
-  fontFamily: "YourArabicFont",
-};
-
-const customListItemStyle = {
-  listStyleType: "circle",
-  marginLeft: "20px",
-};
-
-const DelayOfAppellate = () => {
-  const { t, i18n } = useTranslation();
-  const isRTL = i18n.language === "ar";
-
-  const [data, setData] = useState({});
+const RenderFinalJudgementCard = ({ days, title, descriptions }) => {
+  const { t } = useTranslation();
 
   return (
-    <Container>
-      <Typography
-        variant="h5"
-        sx={{
-          marginBottom: 2,
-          textAlign: i18n.language === "ar" ? "right" : "left",
-        }}
-      >
-        {t("delay.final")}
-      </Typography>
-      <CssBaseline />
-      <Grid
-        container
-        spacing={2}
-        sx={{ textAlign: i18n.language === "ar" ? "right" : "left" }}
-      >
-        <StyledPaper>
-          <StyledContent>
-            <Typography variant="h6" sx={{ fontWeight: "bold" }}>
-              {t("delay.p1")}
-              <Highlight>{t("delay.days")}</Highlight>
-            </Typography>
+    <Card variant="outlined" sx={{ minHeight: "100%" }}>
+      <CardContent>
+        <Stack
+          divider={<Divider orientation="vertical" flexItem />}
+          spacing={1}
+        >
+          <Stack
+            direction="row"
+            divider={<Divider orientation="vertical" flexItem />}
+            spacing={3}
+          >
+            <Box>
+              <Typography>{t("delayOfAppellate.delayDays")}</Typography>
+              <Typography variant="h3">{days}</Typography>
+            </Box>
+            <Typography variant="subtitle1">{title}</Typography>
+          </Stack>
+          <Divider />
+          <ul style={{ marginTop: "20px" }}>
+            {descriptions.map((i, index) => (
+              <li key={`li-${days}-${index}`}>{i}</li>
+            ))}
+          </ul>
+        </Stack>
+      </CardContent>
+    </Card>
+  );
+};
 
-            <ul>
-              <li style={customListItemStyle}>{t("delay.c1")}</li>
-              <li style={customListItemStyle}>{t("delay.c2")}</li>
-            </ul>
-          </StyledContent>
-        </StyledPaper>
-        <StyledPaper>
-          <StyledContent>
-            <Typography variant="h6" sx={{ fontWeight: "bold" }}>
-              {t("delay.p2")}
-              <Highlight>{t("delay.month")}</Highlight>
-            </Typography>
-            <ul>
-              <li style={customListItemStyle}>{t("delay.pc2")}</li>
-            </ul>
-          </StyledContent>
-        </StyledPaper>
-        <StyledPaper>
-          <StyledContent>
-            <Typography variant="h6" sx={{ fontWeight: "bold" }}>
-              {t("delay.p3")}
-              <Highlight>{t("delay.months")}</Highlight>
-            </Typography>
-            <ul>
-              <li style={customListItemStyle}>{t("delay.pc3")}</li>
-            </ul>
-          </StyledContent>
-        </StyledPaper>
-        <Typography
-          variant="h5"
-          sx={{
-            marginBottom: 2,
-            textAlign: i18n.language === "ar" ? "right" : "left",
-          }}
-        >
-          {t("delay.title2")}
+const DelayOfAppellate = ({ data }) => {
+  const { t } = useTranslation();
+
+  return (
+    <Grid container spacing={3}>
+      <Grid item xs={12}>
+        <Typography variant="h5">
+          {t("delayOfAppellate.finalJudgements")}
         </Typography>
-        <Grid
-          container
-          spacing={2}
-          sx={{ textAlign: i18n.language === "ar" ? "right" : "left" }}
-        >
-          <StyledPaper>
-            <StyledContent>
-              <Typography variant="h6" sx={{ fontWeight: "bold" }}>
-                {t("delay.tp1")}
-                <Highlight>{t("delay.hours")}</Highlight>
-              </Typography>
-              <ul>
-                <li style={customListItemStyle}>{t("delay.bullet1")}</li>
-              </ul>
-            </StyledContent>
-          </StyledPaper>
-          <StyledPaper>
-            <StyledContent>
-              <Typography variant="h6" sx={{ fontWeight: "bold" }}>
-                {t("delay.tp2")}
-                <Highlight>{t("delay.hours2")}</Highlight>
-              </Typography>
-              <ul>
-                <li style={customListItemStyle}>{t("delay.bullet2")}</li>
-              </ul>
-            </StyledContent>
-          </StyledPaper>
-        </Grid>
-        <Grid item xs={12}>
-          <Alert severity="error" sx={{ margin: "10px", padding: "10px" }}>
-            {t("delay.alert")}
-          </Alert>
+      </Grid>
+      <Grid item xs={12}>
+        <Grid container spacing={3}>
+          {data.finalJudgement.map((item, index) => (
+            <Grid item xs={12} md={4} key={`finalJudgements-${index}`}>
+              <RenderFinalJudgementCard
+                title={item.title}
+                days={item.days}
+                descriptions={item.descriptions}
+              />
+            </Grid>
+          ))}
         </Grid>
       </Grid>
-      <Typography
-        variant="h6"
-        sx={{
-          marginTop: 2,
-          textAlign: i18n.language === "ar" ? "right" : "left",
-        }}
-      >
-        {t("delay.title3")}
-      </Typography>
-      <Grid
-        container
-        spacing={2}
-        sx={{ textAlign: i18n.language === "ar" ? "right" : "left" }}
-      >
-        <Grid item xs={6}>
-          <StyledPaper>
-            <StyledContent>
-              <Typography>{t("delay.tb1")}</Typography>
-            </StyledContent>
-          </StyledPaper>
-        </Grid>
-        <Grid item xs={6}>
-          <StyledPaper>
-            <StyledContent>
-              <Typography>{t("delay.tb2")}</Typography>
-            </StyledContent>
-          </StyledPaper>
+      <Grid item xs={12}>
+        <Typography variant="h5">
+          {t("delayOfAppellate.decisionOnRevokingOrAccepting")}
+        </Typography>
+      </Grid>
+      <Grid item xs={12}>
+        <Grid container spacing={3}>
+          {data.decisions.map((item, index) => (
+            <Grid
+              item
+              xs={12}
+              md={6}
+              key={`decisionOnRevokingOrAccepting-${index}`}
+            >
+              <RenderFinalJudgementCard
+                title={item.title}
+                days={item.days}
+                descriptions={item.descriptions}
+              />
+            </Grid>
+          ))}
         </Grid>
       </Grid>
-    </Container>
+      <Grid item xs={12}>
+        <Alert severity="warning">
+          {t("delayOfAppellate.theAppealShallBeSubmittedThroughALawyer")}
+        </Alert>
+      </Grid>
+    </Grid>
   );
 };
 
